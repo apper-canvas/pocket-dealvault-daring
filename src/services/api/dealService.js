@@ -1,100 +1,145 @@
 import dealsData from '../mockData/deals.json';
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-class DealService {
-  constructor() {
-    this.deals = [...dealsData];
-  }
+function DealService() {
+  const deals = [...dealsData];
 
-  async getAll() {
+  const getStats = async () => {
     await delay(300);
-    return [...this.deals];
-  }
+    
+    if (deals.length === 0) {
+      return {
+        totalSpent: 0,
+        totalSaved: 0,
+        activeDeals: 0,
+        totalDeals: 0,
+        averageDealValue: 0,
+        savingsPercentage: 0,
+        totalLifetimeSavings: 0,
+        averageRating: 0,
+        activeDealsCount: 0
+      };
+    }
 
-  async getById(id) {
+    const totalSpent = deals.reduce((sum, deal) => sum + (deal.salePrice || 0), 0);
+    const totalOriginal = deals.reduce((sum, deal) => sum + (deal.totalPrice || 0), 0);
+    const totalSaved = totalOriginal - totalSpent;
+    const savingsPercentage = totalOriginal > 0 ? Math.round((totalSaved / totalOriginal) * 100) : 0;
+    
+    const activeDeals = deals.filter(deal => deal.status === 'active').length;
+    const totalDeals = deals.length;
+    const averageDealValue = totalSpent / totalDeals;
+    
+    // New metrics
+    const totalLifetimeSavings = deals.reduce((sum, deal) => {
+      const savings = (deal.totalPrice || 0) - (deal.salePrice || 0);
+      return sum + savings;
+    }, 0);
+    
+    const ratingsSum = deals.reduce((sum, deal) => sum + (deal.rating || 0), 0);
+    const averageRating = deals.length > 0 ? ratingsSum / deals.length : 0;
+    
+    const activeDealsCount = deals.filter(deal => deal.status === 'active').length;
+
+    return {
+      totalSpent,
+      totalSaved,
+      activeDeals,
+      totalDeals,
+      averageDealValue,
+      savingsPercentage,
+      totalLifetimeSavings,
+      averageRating,
+      activeDealsCount
+    };
+};
+
+  const getAll = async () => {
     await delay(200);
-    const deal = this.deals.find(deal => deal.id === id);
+    return [...deals];
+  };
+
+  const getById = async (id) => {
+    await delay(200);
+    const deal = deals.find(deal => deal.id === id);
     if (!deal) {
       throw new Error('Deal not found');
     }
     return { ...deal };
-  }
+  };
+};
 
-  async create(dealData) {
+  const create = async (dealData) => {
     await delay(400);
     const newDeal = {
       ...dealData,
       id: Date.now().toString(),
       createdAt: new Date().toISOString()
     };
-    this.deals.push(newDeal);
+    deals.push(newDeal);
     return { ...newDeal };
-  }
-
-  async update(id, dealData) {
+  };
+const update = async (id, dealData) => {
     await delay(350);
-    const index = this.deals.findIndex(deal => deal.id === id);
+    const index = deals.findIndex(deal => deal.id === id);
     if (index === -1) {
       throw new Error('Deal not found');
     }
-    this.deals[index] = { ...this.deals[index], ...dealData, updatedAt: new Date().toISOString() };
-    return { ...this.deals[index] };
-  }
+    deals[index] = { ...deals[index], ...dealData, updatedAt: new Date().toISOString() };
+    return { ...deals[index] };
+  };
 
-  async delete(id) {
+  const deleteDeal = async (id) => {
     await delay(250);
-    const index = this.deals.findIndex(deal => deal.id === id);
+    const index = deals.findIndex(deal => deal.id === id);
     if (index === -1) {
       throw new Error('Deal not found');
     }
-    this.deals.splice(index, 1);
+    deals.splice(index, 1);
     return true;
-  }
-
-  async getByCategory(category) {
+  };
+const getByCategory = async (category) => {
     await delay(300);
-    return this.deals.filter(deal => deal.category === category);
-  }
+    return deals.filter(deal => deal.category === category);
+  };
 
-  async getByStatus(status) {
+  const getByStatus = async (status) => {
     await delay(300);
-    return this.deals.filter(deal => deal.status === status);
-  }
+    return deals.filter(deal => deal.status === status);
+  };
 
-  async getByPlatform(platform) {
+  const getByPlatform = async (platform) => {
     await delay(300);
-    return this.deals.filter(deal => deal.platform === platform);
-  }
+    return deals.filter(deal => deal.platform === platform);
+  };
 
-  async search(query) {
+  const search = async (query) => {
     await delay(300);
     const lowercaseQuery = query.toLowerCase();
-    return this.deals.filter(deal => 
-      deal.productName.toLowerCase().includes(lowercaseQuery) ||
-      deal.description.toLowerCase().includes(lowercaseQuery) ||
-      deal.category.toLowerCase().includes(lowercaseQuery) ||
-      deal.platform.toLowerCase().includes(lowercaseQuery)
+    return deals.filter(deal => 
+      deal.productName?.toLowerCase().includes(lowercaseQuery) ||
+      deal.description?.toLowerCase().includes(lowercaseQuery) ||
+      deal.category?.toLowerCase().includes(lowercaseQuery) ||
+      deal.platform?.toLowerCase().includes(lowercaseQuery)
     );
-  }
+  };
+};
 
-  async getStats() {
-    await delay(200);
-    const totalSpent = this.deals.reduce((sum, deal) => sum + deal.purchasePrice, 0);
-    const totalRegularPrice = this.deals.reduce((sum, deal) => sum + deal.regularPrice, 0);
-    const totalSaved = totalRegularPrice - totalSpent;
-    const activeDeals = this.deals.filter(deal => deal.status === 'active').length;
-    const averageDealValue = this.deals.length > 0 ? totalSpent / this.deals.length : 0;
-
-    return {
-      totalSpent,
-      totalSaved,
-      activeDeals,
-      totalDeals: this.deals.length,
-      averageDealValue,
-      savingsPercentage: totalRegularPrice > 0 ? Math.round((totalSaved / totalRegularPrice) * 100) : 0
-    };
-  }
+  return {
+    getStats,
+    getAll,
+    getById,
+    create,
+    update,
+    delete: deleteDeal,
+    getByCategory,
+    getByStatus,
+    getByPlatform,
+    search
+  };
 }
 
 export default new DealService();

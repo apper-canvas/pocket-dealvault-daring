@@ -46,8 +46,8 @@ const DashboardSummaryMetrics = () => {
     );
   }
 
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7 gap-6 mb-8">
       <MetricDisplayCard
         icon="DollarSign"
         label="Total Invested"
@@ -77,6 +77,30 @@ const DashboardSummaryMetrics = () => {
         value={`$${Math.round(stats?.averageDealValue || 0)}`}
         gradient="bg-gradient-card"
         delay={0.4}
+      />
+      <MetricDisplayCard
+        icon="TrendingUp"
+        label="Lifetime Savings"
+        value={`$${stats?.totalLifetimeSavings?.toLocaleString() || '0'}`}
+        subValue="All time total"
+        gradient="bg-gradient-warning"
+        delay={0.5}
+      />
+      <MetricDisplayCard
+        icon="Star"
+        label="Avg Deal Rating"
+        value={`${stats?.averageRating?.toFixed(1) || '0.0'}`}
+        subValue="out of 5.0"
+        gradient="bg-gradient-info"
+        delay={0.6}
+      />
+      <MetricDisplayCard
+        icon="Activity"
+        label="Active Deals"
+        value={stats?.activeDealsCount?.toString() || '0'}
+        subValue="Currently active"
+        gradient="bg-gradient-accent"
+        delay={0.7}
       />
     </div>
   );
