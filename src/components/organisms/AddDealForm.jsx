@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import MotionDiv from '@/components/atoms/MotionDiv';
-import ApperIcon from '@/components/ApperIcon';
-import Heading from '@/components/atoms/Heading';
-import Paragraph from '@/components/atoms/Paragraph';
-import Input from '@/components/atoms/Input';
-import Select from '@/components/atoms/Select';
-import TextArea from '@/components/atoms/TextArea';
-import FormField from '@/components/molecules/FormField';
-import AnimatedButton from '@/components/molecules/AnimatedButton';
-import BaseCard from '@/components/atoms/BaseCard';
-import dealService from '@/services/api/dealService';
-import categoryService from '@/services/api/categoryService';
-import platformService from '@/services/api/platformService';
-import { toast } from 'react-toastify';
+import React, { useState, useEffect } from 'react'
+import MotionDiv from '@/components/atoms/MotionDiv'
+import ApperIcon from '@/components/ApperIcon'
+import Heading from '@/components/atoms/Heading'
+import Paragraph from '@/components/atoms/Paragraph'
+import Input from '@/components/atoms/Input'
+import Select from '@/components/atoms/Select'
+import TextArea from '@/components/atoms/TextArea'
+import Span from '@/components/atoms/Span'
+import FormField from '@/components/molecules/FormField'
+import AnimatedButton from '@/components/molecules/AnimatedButton'
+import BaseCard from '@/components/atoms/BaseCard'
+import dealService from '@/services/api/dealService'
+import categoryService from '@/services/api/categoryService'
+import platformService from '@/services/api/platformService'
+import { toast } from 'react-toastify'
 
 const AddDealForm = ({ onDealAdded, onCancel }) => {
   const [categories, setCategories] = useState([]);
