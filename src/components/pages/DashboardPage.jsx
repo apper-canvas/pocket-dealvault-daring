@@ -1,12 +1,13 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import MotionDiv from '@/components/atoms/MotionDiv';
-import Heading from '@/components/atoms/Heading';
-import Paragraph from '@/components/atoms/Paragraph';
-import AnimatedButton from '@/components/molecules/AnimatedButton';
-import DashboardSummaryMetrics from '@/components/organisms/DashboardSummaryMetrics';
-import DashboardRecentDeals from '@/components/organisms/DashboardRecentDeals';
-import AllDealsGrid from '@/components/organisms/AllDealsGrid'; // Re-use the all deals grid or create a simplified dashboard version
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import MotionDiv from '@/components/atoms/MotionDiv'
+import Heading from '@/components/atoms/Heading'
+import Paragraph from '@/components/atoms/Paragraph'
+import Button from '@/components/atoms/Button'
+import AnimatedButton from '@/components/molecules/AnimatedButton'
+import DashboardSummaryMetrics from '@/components/organisms/DashboardSummaryMetrics'
+import DashboardRecentDeals from '@/components/organisms/DashboardRecentDeals'
+import AllDealsGrid from '@/components/organisms/AllDealsGrid'
 
 const DashboardPage = () => {
   const navigate = useNavigate();
