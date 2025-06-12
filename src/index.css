@@ -8,6 +8,23 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
+/* CSS Custom Properties for Theme Support */
+:root {
+  --scrollbar-track: #f3f4f6;
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
+  --glass-bg: rgba(0, 0, 0, 0.05);
+  --glass-border: rgba(0, 0, 0, 0.1);
+}
+
+:root.dark {
+  --scrollbar-track: #1f2937;
+  --scrollbar-thumb: #374151;
+  --scrollbar-thumb-hover: #4b5563;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
 /* Ensure scrollbars are visible */
 body {
   overflow-y: auto;
@@ -15,6 +32,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Inter', ui-sans-serif, system-ui;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Prevent horizontal overflow */
@@ -28,22 +46,22 @@ body {
   height: 100vh;
 }
 
-/* Custom scrollbar for dark theme */
+/* Custom scrollbar with theme support */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1F2937;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #374151;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4B5563;
+  background: var(--scrollbar-thumb-hover);
 }
 
 @layer utilities {
@@ -56,11 +74,19 @@ body {
     display: none;
   }
   
-  /* Glass morphism utility */
+  /* Glass morphism utility with theme support */
   .glass-morphism {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+  }
+  
+  /* Light mode glass morphism */
+  .light .glass-morphism {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
   
   /* Gradient text */
