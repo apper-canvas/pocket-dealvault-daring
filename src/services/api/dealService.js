@@ -146,7 +146,4 @@ const getByDate = async (date) => {
     search
   };
 }
-
-export default new DealService();
-
 export default new DealService();
