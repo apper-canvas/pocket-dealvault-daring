@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { format, parse } from 'date-fns'
 import MotionDiv from '@/components/atoms/MotionDiv'
 import ApperIcon from '@/components/ApperIcon'
 import Heading from '@/components/atoms/Heading'
@@ -14,17 +15,16 @@ import dealService from '@/services/api/dealService'
 import categoryService from '@/services/api/categoryService'
 import platformService from '@/services/api/platformService'
 import { toast } from 'react-toastify'
-
 const AddDealForm = ({ onDealAdded, onCancel }) => {
   const [categories, setCategories] = useState([]);
   const [platforms, setPlatforms] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     productName: '',
     platform: '',
     purchasePrice: '',
     regularPrice: '',
-    purchaseDate: new Date().toISOString().split('T')[0],
+    purchaseDate: format(new Date(), 'MM/dd/yyyy'),
     category: '',
     status: 'active',
     description: '',
@@ -72,12 +72,33 @@ const AddDealForm = ({ onDealAdded, onCancel }) => {
     }
   }, [formData.purchasePrice, formData.regularPrice]);
 
-  const handleInputChange = (e) => {
+const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    // Handle date format conversion for purchaseDate
+    if (name === 'purchaseDate') {
+      // Convert mm/dd/yyyy to ISO format for internal storage
+      try {
+        const parsedDate = parse(value, 'MM/dd/yyyy', new Date());
+        const isoDate = parsedDate.toISOString().split('T')[0];
+        setFormData(prev => ({
+          ...prev,
+          [name]: value, // Keep display format
+          purchaseDateISO: isoDate // Store ISO format for backend
+        }));
+      } catch (error) {
+        // If parsing fails, just store the value as-is
+        setFormData(prev => ({
+          ...prev,
+          [name]: value
+        }));
+      }
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
     
     // Clear error when user starts typing
     if (errors[name]) {
@@ -284,12 +305,13 @@ const AddDealForm = ({ onDealAdded, onCancel }) => {
                 </div>
               </FormField>
 
-              <FormField label="Purchase Date *" error={errors.purchaseDate}>
+<FormField label="Purchase Date * (MM/DD/YYYY)" error={errors.purchaseDate}>
                 <Input
-                  type="date"
+                  type="text"
                   name="purchaseDate"
                   value={formData.purchaseDate}
                   onChange={handleInputChange}
+                  placeholder="MM/DD/YYYY"
                 />
               </FormField>
             </div>
