@@ -24,9 +24,15 @@
     "totalSpent": 320
   },
   {
-    "id": "5",
+"id": "5",
     "name": "SaaS Mantra",
     "dealCount": 3,
     "totalSpent": 240
+  },
+  {
+    "id": "6",
+    "name": "Prime Club",
+    "dealCount": 2,
+    "totalSpent": 180
   }
 ]
