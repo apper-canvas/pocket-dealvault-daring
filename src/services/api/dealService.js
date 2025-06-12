@@ -55,7 +55,7 @@ function DealService() {
       averageRating,
       activeDealsCount
     };
-};
+  };
 
   const getAll = async () => {
     await delay(200);
@@ -70,7 +70,6 @@ function DealService() {
     }
     return { ...deal };
   };
-};
 
   const create = async (dealData) => {
     await delay(400);
@@ -82,7 +81,8 @@ function DealService() {
     deals.push(newDeal);
     return { ...newDeal };
   };
-const update = async (id, dealData) => {
+
+  const update = async (id, dealData) => {
     await delay(350);
     const index = deals.findIndex(deal => deal.id === id);
     if (index === -1) {
@@ -101,7 +101,8 @@ const update = async (id, dealData) => {
     deals.splice(index, 1);
     return true;
   };
-const getByCategory = async (category) => {
+
+  const getByCategory = async (category) => {
     await delay(300);
     return deals.filter(deal => deal.category === category);
   };
@@ -126,7 +127,6 @@ const getByCategory = async (category) => {
       deal.platform?.toLowerCase().includes(lowercaseQuery)
     );
   };
-};
 
   return {
     getStats,
