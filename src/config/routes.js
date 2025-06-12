@@ -3,6 +3,7 @@ import DashboardPage from '@/components/pages/DashboardPage';
 import AllDealsPage from '@/components/pages/AllDealsPage';
 import CategoriesPage from '@/components/pages/CategoriesPage';
 import AddDealPage from '@/components/pages/AddDealPage';
+import CalendarPage from '@/components/pages/CalendarPage';
 import NotFoundPage from '@/components/pages/NotFoundPage';
 
 export const routes = {
@@ -34,19 +35,26 @@ component: AllDealsPage
     path: '/categories',
     icon: 'FolderOpen',
 component: CategoriesPage
+},
+  calendar: {
+    id: 'calendar',
+    label: 'Calendar',
+    path: '/calendar',
+    icon: 'Calendar',
+    component: CalendarPage
   },
   addDeal: {
     id: 'addDeal',
     label: 'Add Deal',
     path: '/add-deal',
     icon: 'Plus',
-component: AddDealPage
+    component: AddDealPage
   },
   notFound: {
     id: 'notFound',
     label: 'Not Found',
     path: '*',
-component: NotFoundPage,
+    component: NotFoundPage,
     hideFromNav: true
   }
 };
