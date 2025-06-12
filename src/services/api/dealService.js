@@ -10,7 +10,7 @@ function DealService() {
   const getStats = async () => {
     await delay(300);
     
-    if (deals.length === 0) {
+if (deals.length === 0) {
       return {
         totalSpent: 0,
         totalSaved: 0,
@@ -18,9 +18,9 @@ function DealService() {
         totalDeals: 0,
         averageDealValue: 0,
         savingsPercentage: 0,
-        totalLifetimeSavings: 0,
-        averageRating: 0,
-        activeDealsCount: 0
+        refundRate: 0,
+        unusedLTDs: 0,
+        failedLTDs: 0
       };
     }
 
@@ -33,16 +33,10 @@ function DealService() {
     const totalDeals = deals.length;
     const averageDealValue = totalSpent / totalDeals;
     
-    // New metrics
-    const totalLifetimeSavings = deals.reduce((sum, deal) => {
-      const savings = (deal.totalPrice || 0) - (deal.salePrice || 0);
-      return sum + savings;
-    }, 0);
-    
-    const ratingsSum = deals.reduce((sum, deal) => sum + (deal.rating || 0), 0);
-    const averageRating = deals.length > 0 ? ratingsSum / deals.length : 0;
-    
-    const activeDealsCount = deals.filter(deal => deal.status === 'active').length;
+    // New metrics calculations
+    const refundRate = 5.0; // Fixed refund rate percentage
+    const unusedLTDs = deals.filter(deal => deal.status === 'expired').length;
+    const failedLTDs = deals.filter(deal => deal.status === 'cancelled').length;
 
     return {
       totalSpent,
@@ -51,9 +45,9 @@ function DealService() {
       totalDeals,
       averageDealValue,
       savingsPercentage,
-      totalLifetimeSavings,
-      averageRating,
-      activeDealsCount
+      refundRate,
+      unusedLTDs,
+      failedLTDs
     };
   };
 

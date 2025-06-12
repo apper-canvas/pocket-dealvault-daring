@@ -47,10 +47,10 @@ const DashboardSummaryMetrics = () => {
   }
 
 return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7 gap-6 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7 gap-6 mb-8">
       <MetricDisplayCard
         icon="DollarSign"
-        label="Total Invested"
+        label="Lifetime Spends"
         value={`$${stats?.totalSpent?.toLocaleString() || '0'}`}
         gradient="bg-gradient-primary"
         delay={0.1}
@@ -79,26 +79,26 @@ return (
         delay={0.4}
       />
       <MetricDisplayCard
-        icon="TrendingUp"
-        label="Lifetime Savings"
-        value={`$${stats?.totalLifetimeSavings?.toLocaleString() || '0'}`}
-        subValue="All time total"
+        icon="RefreshCw"
+        label="Refund Rate"
+        value={`${stats?.refundRate?.toFixed(1) || '0.0'}%`}
+        subValue="Average refund rate"
         gradient="bg-gradient-warning"
         delay={0.5}
       />
       <MetricDisplayCard
-        icon="Star"
-        label="Avg Deal Rating"
-        value={`${stats?.averageRating?.toFixed(1) || '0.0'}`}
-        subValue="out of 5.0"
+        icon="PackageX"
+        label="Unused LTDs"
+        value={stats?.unusedLTDs?.toString() || '0'}
+        subValue="Expired deals"
         gradient="bg-gradient-info"
         delay={0.6}
       />
       <MetricDisplayCard
-        icon="Activity"
-        label="Active Deals"
-        value={stats?.activeDealsCount?.toString() || '0'}
-        subValue="Currently active"
+        icon="XCircle"
+        label="Failed LTDs"
+        value={stats?.failedLTDs?.toString() || '0'}
+        subValue="Cancelled deals"
         gradient="bg-gradient-accent"
         delay={0.7}
       />
