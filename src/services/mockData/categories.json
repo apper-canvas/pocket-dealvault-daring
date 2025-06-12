@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "Productivity",
+    "color": "#6366F1",
+    "dealCount": 8
+  },
+  {
+    "id": "2",
+    "name": "Design",
+    "color": "#8B5CF6",
+    "dealCount": 5
+  },
+  {
+    "id": "3",
+    "name": "Marketing",
+    "color": "#10B981",
+    "dealCount": 7
+  },
+  {
+    "id": "4",
+    "name": "Development",
+    "color": "#F59E0B",
+    "dealCount": 4
+  },
+  {
+    "id": "5",
+    "name": "Analytics",
+    "color": "#EF4444",
+    "dealCount": 3
+  }
+]

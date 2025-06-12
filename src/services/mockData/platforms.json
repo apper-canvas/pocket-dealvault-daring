@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "AppSumo",
+    "dealCount": 12,
+    "totalSpent": 890
+  },
+  {
+    "id": "2",
+    "name": "PitchGround",
+    "dealCount": 8,
+    "totalSpent": 650
+  },
+  {
+    "id": "3",
+    "name": "StackSocial",
+    "dealCount": 6,
+    "totalSpent": 480
+  },
+  {
+    "id": "4",
+    "name": "DealMirror",
+    "dealCount": 4,
+    "totalSpent": 320
+  },
+  {
+    "id": "5",
+    "name": "SaaS Mantra",
+    "dealCount": 3,
+    "totalSpent": 240
+  }
+]

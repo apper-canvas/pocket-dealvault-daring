@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "productName": "Notion Pro",
+    "platform": "AppSumo",
+    "purchasePrice": 59,
+    "regularPrice": 240,
+    "purchaseDate": "2024-01-15",
+    "category": "Productivity",
+    "status": "active",
+    "description": "All-in-one workspace for notes, tasks, wikis, and databases. Perfect for organizing everything in one place.",
+    "accessUrl": "https://notion.so",
+    "notes": "Using for project management and documentation. Great for team collaboration.",
+    "logoUrl": ""
+  },
+  {
+    "id": "2",
+    "productName": "Canva Pro",
+    "platform": "PitchGround",
+    "purchasePrice": 89,
+    "regularPrice": 360,
+    "purchaseDate": "2024-02-03",
+    "category": "Design",
+    "status": "active",
+    "description": "Professional design platform with premium templates, stock photos, and brand kit features.",
+    "accessUrl": "https://canva.com",
+    "notes": "Essential for creating marketing materials and social media content.",
+    "logoUrl": ""
+  },
+  {
+    "id": "3",
+    "productName": "Mailchimp Premium",
+    "platform": "StackSocial",
+    "purchasePrice": 149,
+    "regularPrice": 600,
+    "purchaseDate": "2024-01-28",
+    "category": "Marketing",
+    "status": "pending",
+    "description": "Advanced email marketing platform with automation, analytics, and A/B testing capabilities.",
+    "accessUrl": "https://mailchimp.com",
+    "notes": "Waiting for account activation. Will use for newsletter campaigns.",
+    "logoUrl": ""
+  },
+  {
+    "id": "4",
+    "productName": "Figma Professional",
+    "platform": "AppSumo",
+    "purchasePrice": 79,
+    "regularPrice": 450,
+    "purchaseDate": "2024-02-10",
+    "category": "Design",
+    "status": "active",
+    "description": "Collaborative interface design tool with prototyping and handoff features.",
+    "accessUrl": "https://figma.com",
+    "notes": "Using for UI/UX design projects. Great collaboration features.",
+    "logoUrl": ""
+  },
+  {
+    "id": "5",
+    "productName": "Ahrefs Lite",
+    "platform": "DealMirror",
+    "purchasePrice": 199,
+    "regularPrice": 1200,
+    "purchaseDate": "2024-01-20",
+    "category": "Marketing",
+    "status": "active",
+    "description": "SEO toolset for keyword research, competitor analysis, and backlink tracking.",
+    "accessUrl": "https://ahrefs.com",
+    "notes": "Excellent for SEO research and content strategy planning.",
+    "logoUrl": ""
+  }
+]
