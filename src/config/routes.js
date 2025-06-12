@@ -1,9 +1,9 @@
-import Home from '../pages/Home';
-import Dashboard from '../pages/Dashboard';
-import AllDeals from '../pages/AllDeals';
-import Categories from '../pages/Categories';
-import AddDeal from '../pages/AddDeal';
-import NotFound from '../pages/NotFound';
+import HomePage from '@/components/pages/HomePage';
+import DashboardPage from '@/components/pages/DashboardPage';
+import AllDealsPage from '@/components/pages/AllDealsPage';
+import CategoriesPage from '@/components/pages/CategoriesPage';
+import AddDealPage from '@/components/pages/AddDealPage';
+import NotFoundPage from '@/components/pages/NotFoundPage';
 
 export const routes = {
   home: {
@@ -11,7 +11,7 @@ export const routes = {
     label: 'Home',
     path: '/home',
     icon: 'Home',
-    component: Home,
+component: HomePage,
     hideFromNav: true
   },
   dashboard: {
@@ -19,34 +19,34 @@ export const routes = {
     label: 'Dashboard',
     path: '/dashboard',
     icon: 'LayoutDashboard',
-    component: Dashboard
+component: DashboardPage
   },
   allDeals: {
     id: 'allDeals',
     label: 'All Deals',
     path: '/deals',
     icon: 'Package',
-    component: AllDeals
+component: AllDealsPage
   },
   categories: {
     id: 'categories',
     label: 'Categories',
     path: '/categories',
     icon: 'FolderOpen',
-    component: Categories
+component: CategoriesPage
   },
   addDeal: {
     id: 'addDeal',
     label: 'Add Deal',
     path: '/add-deal',
     icon: 'Plus',
-    component: AddDeal
+component: AddDealPage
   },
   notFound: {
     id: 'notFound',
     label: 'Not Found',
     path: '*',
-    component: NotFound,
+component: NotFoundPage,
     hideFromNav: true
   }
 };
