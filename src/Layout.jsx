@@ -127,9 +127,9 @@ const Layout = () => {
             {/* Calendar Section */}
             <div className="p-4 border-t border-gray-200 dark:border-gray-700">
               <div className="mb-4">
-                <button
+<button
                   onClick={() => setShowCalendar(!showCalendar)}
-                  className="flex items-center justify-between w-full p-3 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  className="flex items-center justify-between w-full p-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                 >
                   <div className="flex items-center space-x-3">
                     <ApperIcon name="Calendar" size={16} className="text-gray-600 dark:text-gray-400" />
@@ -284,8 +284,8 @@ className="lg:hidden fixed left-0 top-0 h-full w-72 bg-white dark:bg-surface bor
                   <div className="p-4 border-t border-gray-200 dark:border-gray-700">
                     <div className="mb-4">
                       <button
-                        onClick={() => setShowMobileCalendar(!showMobileCalendar)}
-                        className="flex items-center justify-between w-full p-3 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+onClick={() => setShowMobileCalendar(!showMobileCalendar)}
+                        className="flex items-center justify-between w-full p-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                       >
                         <div className="flex items-center space-x-3">
                           <ApperIcon name="Calendar" size={16} className="text-gray-600 dark:text-gray-400" />
