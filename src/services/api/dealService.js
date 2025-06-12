@@ -122,6 +122,16 @@ if (deals.length === 0) {
     );
   };
 
+const getByDate = async (date) => {
+    await delay(300);
+    const targetDate = new Date(date).toISOString().split('T')[0];
+    return deals.filter(deal => {
+      if (!deal.purchaseDate) return false;
+      const dealDate = new Date(deal.purchaseDate).toISOString().split('T')[0];
+      return dealDate === targetDate;
+    });
+  };
+
   return {
     getStats,
     getAll,
@@ -132,8 +142,11 @@ if (deals.length === 0) {
     getByCategory,
     getByStatus,
     getByPlatform,
+    getByDate,
     search
   };
 }
+
+export default new DealService();
 
 export default new DealService();
