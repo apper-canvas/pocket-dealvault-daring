@@ -150,9 +150,8 @@ className="lg:hidden fixed left-0 top-0 h-full w-72 bg-white dark:bg-surface bor
                         <span>{route.label}</span>
                       </NavLink>
                     ))}
-                  </nav>
+</nav>
 
-</div>
                 </div>
               </motion.aside>
             </>
