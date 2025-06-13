@@ -2,18 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ApperIcon from '@/components/ApperIcon';
-import ApperIcon from '@/components/ApperIcon';
 import ThemeToggle from '@/components/molecules/ThemeToggle';
 import { navRoutes } from '@/config/routes';
 
 const Layout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-const location = useLocation();
   const location = useLocation();
 
   // Fetch deals on component mount
-const toggleMobileMenu = () => {
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
