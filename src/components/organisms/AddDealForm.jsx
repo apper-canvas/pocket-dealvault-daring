@@ -6,6 +6,7 @@ import Heading from '@/components/atoms/Heading'
 import Paragraph from '@/components/atoms/Paragraph'
 import Input from '@/components/atoms/Input'
 import Select from '@/components/atoms/Select'
+import SearchableSelect from '@/components/atoms/SearchableSelect'
 import TextArea from '@/components/atoms/TextArea'
 import Span from '@/components/atoms/Span'
 import FormField from '@/components/molecules/FormField'
@@ -226,19 +227,14 @@ const handleInputChange = (e) => {
                 </Select>
               </FormField>
 
-              <FormField label="Category *" error={errors.category}>
-                <Select
+<FormField label="Category *" error={errors.category}>
+                <SearchableSelect
                   name="category"
                   value={formData.category}
                   onChange={handleInputChange}
-                >
-                  <option value="">Select category</option>
-                  {categories.map(category => (
-                    <option key={category.id} value={category.name}>
-                      {category.name}
-                    </option>
-                  ))}
-                </Select>
+                  options={categories}
+                  placeholder="Search and select category"
+                />
               </FormField>
 
               <FormField label="Status" error={errors.status}>
